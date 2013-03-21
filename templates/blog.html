@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+  <div class="container">
+    <div class="span10 offset1">
+      {% if admin %}
+        <a href="/edit_blog" class="pull-right">New Entry</a>
+      {% endif %}
+      {% for content in blog_content %}
+        <h2>
+          <button class="btn disabled btn-mini">{{content.created | datetime}}</button>
+          {{content.title}}        
+          {% if admin %}
+            <small><a href="/edit_blog/{{content.id}}">[edit]</a></small>
+          {% endif %}
+        </h2>
+        <p>{{content.body | safe}}</p>
+        <hr class="soften">
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
