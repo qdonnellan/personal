@@ -25,10 +25,37 @@ from handlers import MainHandler
 from google.appengine.api import users
 import database
 from format import formatContent
+from google.appengine.api import mail
+import logging
 
 class MainPage(MainHandler):
   def get(self):
     self.render('home.html', home_active ="active")
+
+class StaticPage(MainHandler):
+  def get(self,page_name):
+    if page_name in ['work', 'about', 'contact']:
+      self.render('%s.html' % page_name)
+    else:
+      self.redirect('/')
+
+  def post(self,page_name):
+    email_addy = self.request.get('email_addy')
+    if not mail.is_email_valid(email_addy):
+      self.redirect('/contact?error=invalid email')
+    else:
+      try:
+        message = mail.EmailMessage(
+          sender="qdonnellan Support <qdonnellan@gmail.com",
+          subject='EMAIL FROM APPSPOT WEBSITE:' + self.request.get('email_subject'),
+          to = 'qdonnellan@gmail.com',
+          reply_to = email_addy,
+          body = self.request.get('email_message'))
+        message.send()
+      except Exception as e:
+        self.redirect('/contact?error=There was a problem sending your email: %s' % e)
+      else:
+        self.redirect('/contact?success=Your email has been sent!')
 
 class BlogPage(MainHandler):
   def get(self):
@@ -69,6 +96,7 @@ app = webapp2.WSGIApplication([
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
+  ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)
      

@@ -41,4 +41,7 @@ class MainHandler(webapp2.RequestHandler):
     return t.render(params)
     
   def render(self, template, **kw):              
-    self.write(self.render_str(template,**kw))
+    self.write(self.render_str(template, 
+      error = self.request.get('error'),
+      success = self.request.get('success'),
+      **kw))

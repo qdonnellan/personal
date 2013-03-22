@@ -17,22 +17,24 @@
   <body>
       <div class="container">
         <ul class="nav nav-pills">
-          <li class="{{home_active}}"><a href="/">Home</a></li>
-          <li class="{{blog_active}}"><a href="/blog">Blog</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li> 
-          <li class="pull-right muted">Official Website of Quentin A. Donnellan</li>       
+          <li {% block home_active %}{% endblock %}><a href="/">Home</a></li>
+          <li {% block about_active %}{% endblock %}><a href="/about">About</a></li>
+          <li {% block blog_active %}{% endblock %}><a href="/blog">Blog</a></li>
+          <li {% block work_active %}{% endblock %}><a href="/work">Work</a></li>
+          <li {% block contact_active %}{% endblock %}><a href="/contact">Contact</a></li> 
+          <li class="pull-right muted">Official Website of Quentin A. Donnellan</li> 
         </ul>
-
       </div>
-      {% block body %}{% endblock %}
+      {% block body %}
+        <!-- page content goes in here -->
+      {% endblock %}
       <script src="/javascript/application.js"></script>
       <script src="/javascript/bootstrap.js"></script>
       <script src="/javascript/prettify.js"></script>
       <script src="/javascript/lang-tex.js"></script>
     <footer class="footer">
       <div class="container">
-        <p>The Official Website of Quentin Donnellan</p>
+        <p>The Official Website of Quentin A. Donnellan</p>
         <p>Code for this project is open source and licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a></p>
         <p>All content of these pages is creative commons <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></p>
         
