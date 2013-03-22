@@ -40,16 +40,12 @@ class StaticPage(MainHandler):
       self.redirect('/')
 
   def post(self,page_name):
-    email_addy = self.request.get('email_addy')
-    if not mail.is_email_valid(email_addy):
-      self.redirect('/contact?error=invalid email')
-    else:
       try:
         message = mail.EmailMessage(
-          sender="qdonnellan Support <qdonnellan@gmail.com",
+          sender="qdonnellan Support <qdonnellan@gmail.com>",
           subject='EMAIL FROM APPSPOT WEBSITE:' + self.request.get('email_subject'),
           to = 'qdonnellan@gmail.com',
-          reply_to = email_addy,
+          reply_to = self.request.get('email_addy'),
           body = self.request.get('email_message'))
         message.send()
       except Exception as e:

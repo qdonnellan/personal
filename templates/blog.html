@@ -3,26 +3,28 @@
 {% block body %}
   <div class="container">
     <div class="row-fluid">
-      {% if admin %}
-        <a href="/edit_blog" class="pull-right">New Entry</a>
-      {% endif %}
-      {% for content in blog_content %}
-        <section class="blog-post" id="post{{content.id}}">
-          <h2>          
-            <a class="blog-title" href="/blog/{{content.id}}">{{content.title}}</a>        
-            {% if admin %}
-              <small><a href="/edit_blog/{{content.id}}">[edit]</a></small>
-            {% endif %}
-          </h2>
-          <p class="muted">{{content.created | datetime}}</p>
-          <hr>
-          <p>{{content.body | safe}}</p>
-          
-        </section>
-      {% endfor %}
-      {% if single_post %}
-        <a href="/blog"><i class="icon-circle-arrow-left"></i> Back to all posts</a>
-      {% endif %}
+      <div class="span8 offset2">
+        {% if admin %}
+          <a href="/edit_blog" class="pull-right">New Entry</a>
+        {% endif %}
+        {% for content in blog_content %}
+          <section class="blog-post" id="post{{content.id}}">
+            <h2>          
+              <a class="blog-title" href="/blog/{{content.id}}">{{content.title}}</a>        
+              {% if admin %}
+                <small><a href="/edit_blog/{{content.id}}">[edit]</a></small>
+              {% endif %}
+            </h2>
+            <p class="muted">{{content.created | datetime}}</p>
+            <hr>
+            <p>{{content.body | safe}}</p>
+            
+          </section>
+        {% endfor %}
+        {% if single_post %}
+          <a href="/blog"><i class="icon-circle-arrow-left"></i> Back to all posts</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 {% endblock %}
