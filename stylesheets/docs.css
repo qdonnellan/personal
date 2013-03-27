@@ -36,6 +36,20 @@ h3 code {
   color:#333;
 }
 
+.lesson-quote {
+  padding:20px;
+  overflow: hidden
+}
+
+.lesson-quote i {
+  color:#e3e3e3;
+}
+
+.lesson-citation {
+  color:#ccc;
+  padding-right:20px;
+}
+
 .nav-pills a {
   color:#ccc;
 }

@@ -24,7 +24,7 @@ import webapp2
 from handlers import MainHandler
 from google.appengine.api import users
 import database
-from format import formatContent
+from format_lite import formatContent
 from google.appengine.api import mail
 import logging
 
