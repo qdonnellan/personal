@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+  <div class="span10 offset1">
+    <form>
+      <ul id="myTab" class="nav nav-tabs">
+        {% for tree in ccss %}
+          <li {% if loop.first %}class="active"{% endif %}><a href="#{{tree}}" data-toggle="tab">{{tree}}</a></li>
+        {% endfor %}
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        {% for tree in ccss %}
+        <div class="tab-pane fade in {% if loop.first %}active{% endif %}" id="{{tree}}">
+          {% if tree == 'Math' %}
+            {% for grade in ccss[tree] %}
+              <label class="checkbox">
+                <input type="checkbox">
+                  {% if grade in namemap %}
+                    {{namemap[grade]}}
+                  {% else %}
+                    {{grade}}
+                  {% endif %}
+              </label>
+            {% endfor %}
+          {% else %} 
+          <div class="accordion" id="accordion2"> 
+          {% for strand in ccss[tree] %}           
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{tree}}-{{strand}}">
+                  {% if strand in namemap %}
+                    {{namemap[strand]}}
+                  {% else %}
+                    {{strand}}
+                  {% endif %}
+                </a>
+              </div>
+              <div id="{{tree}}-{{strand}}" class="accordion-body collapse">
+                <div class="accordion-inner">
+                  
+                  {% for grade in ccss[tree][strand] %}
+                    <label class="checkbox">
+                      <input type="checkbox">
+                        {% if grade in namemap %}
+                          {{namemap[grade]}}
+                        {% else %}
+                          {{grade}}
+                        {% endif %}
+                    </label>
+                  {% endfor %}
+                  
+                </div>
+              </div>
+            </div> 
+          {% endfor %}    
+          </div>  
+          {% endif %}      
+        </div>   
+        {% endfor %}   
+      </div> 
+    </form>  
+  </div>
+</div>
+
+{% endblock %}

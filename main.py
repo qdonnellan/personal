@@ -27,6 +27,7 @@ import database
 from format_lite import formatContent
 from google.appengine.api import mail
 import logging
+import json
 
 class MainPage(MainHandler):
   def get(self):
@@ -86,13 +87,55 @@ class EditBlog(MainHandler):
       database.editBlogContent(title, body, contentID)
       self.redirect('/blog')
 
+class practice(MainHandler):
+  def get(self):
+    with open('ccss.json', 'rb') as f:
+      ccss = json.load(f)
+    f.closed
+    namemap = {
+      '1' : 'Grade 1',
+      '2' : 'Grade 2', 
+      '3' : 'Grade 3', 
+      '4' : 'Grade 4',
+      '5' : 'Grade 5', 
+      '6' : 'Grade 6', 
+      '7' : 'Grade 7',
+      '8' : 'Grade 8', 
+      '6-8' : 'Grades 6-8', 
+      '9-10' : 'Grades 9-10',
+      '11-12' : 'Grades 11-12', 
+      'K' : 'Kindergarten', 
+      'RH' : 'History/Social Studies',
+      'RST' : 'Science & Technical Subjects',
+      'Practice' : 'Mathematical Practice',
+      'HSN' : 'High School: Number and Quantity',
+      'HSA' : 'High School: Algebra',
+      'HSF' : 'High School: Functions',
+      'HSG' : 'High School: Geometry',
+      'HSS' : 'High School: Statistics & Probability',
+      'CCRA' : 'College and Career Readiness Anchor Standards',
+      'RL' : 'Reading: Literature',
+      'RI' : 'Reading: Informational Text',
+      'RF' : 'Reading: Foundational Skills', 
+      'W' : 'Writing',
+      'SL' : 'Speaking & Listening',
+      'L' : 'Language',
+      'WHST' : 'Writing for History/Social Studies, Science, & Technical Subjects',
+      'CCRA-R' : 'College and Career Readiness Anchor Standards for Reading',
+      
+
+    }
+    self.render('practice.html', ccss=ccss, namemap = namemap)
+
+    
+
 app = webapp2.WSGIApplication([
   ('/blog', BlogPage),
   ('/blog/(\w+)', BlogPermalink),
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
+  ('/practice', practice),
   ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)
-     
