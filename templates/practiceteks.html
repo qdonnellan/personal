@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block home_active %}class="active"{% endblock %}
+{% block body %}
+<div class="container">
+  <form>
+    <div class="accordion span6" id="master-accordion">
+      {% for chapter in teks %}
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#master-accordion" href="#chapter-{{chapter}}">
+            {{teks[chapter][0]}}
+          </a>
+        </div>
+        <div id="chapter-{{chapter}}" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <!-- inner accordion -->
+            <div class="accordion" id="slave-accordion-{{chapter}}">
+              {% for subchapter in teks[chapter][1] %}
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#slave-accordion-{{chapter}}" href="#chapter-{{chapter}}-sub-{{subchapter}}">
+                    <i class="icon-signin muted"></i> {{teks[chapter][1][subchapter][0]}}
+                  </a>
+                </div>
+                <div id="chapter-{{chapter}}-sub-{{subchapter}}" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    {% for section in teks[chapter][1][subchapter][1] %}
+                      {% if 'Implementation of Texas Essential' not in teks[chapter][1][subchapter][1][section][0] %}
+                      <label class="checkbox">
+                        <input type="checkbox">
+                        {{ teks[chapter][1][subchapter][1][section][0] }}
+                      </label>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <!-- end inner accordion -->
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+
+{% endblock %}
+

@@ -3,19 +3,45 @@
 {% block body %}
 <div class="container">
   <div class="span10 offset1">
-    <form>
+    <form method="post">
       <ul id="myTab" class="nav nav-tabs">
+          <li class="active"><a href="#this-course" data-toggle="tab">This Course<br><small class="muted">Already Added</small></a></li>
         {% for tree in ccss %}
-          <li {% if loop.first %}class="active"{% endif %}><a href="#{{tree}}" data-toggle="tab">{{tree}}</a></li>
+          <li><a href="#{{tree}}" data-toggle="tab">{{tree}}<br><small class="muted">Explore/Add</small></a></li>
         {% endfor %}
+          <li><a href="#teks}}" data-toggle="tab">TEKS (Texas-Only)<br><small class="muted">Explore/Add</small></a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="this-course">
+          <p class="muted"><strong>Current Standards Associated with this Course.</strong> When you create or edit your lessons, you will be able to attach standards associated with the following strands. </p>
+          
+            {% for standard in current_standards %}
+              {% if standard != '' %}
+              <p>
+                {% for level in standard.split('.') %}
+                  {% if loop.first %}
+                    <span class="muted"><i class="icon-bookmark"></i> {{level}}</span>
+                  {% else %}
+                    <span class="muted"> <i class="muted icon-double-angle-right"></i> </span>
+                      {% if loop.last and 'CCRA' in standard %}
+                        {{namemap['CCRA-'+level]}}
+                      {% else %}
+                        {{namemap[level]}}
+                      {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </p>
+              {% endif %}
+            {% endfor %}
+        </div>
         {% for tree in ccss %}
-        <div class="tab-pane fade in {% if loop.first %}active{% endif %}" id="{{tree}}">
+        <div class="tab-pane fade in" id="{{tree}}">
           {% if tree == 'Math' %}
+          <p class="muted"><strong>The Common Core State Standards for Math</strong> are organized by grade level. Please select the grade levels you want to associate with your course. When you create or edit your lessons, you will be able to choose standards that belong to the grade levels you've selected below.</p>
+          <p><button class="btn btn-small btn-primary">Save Changes</button></p>
             {% for grade in ccss[tree] %}
               <label class="checkbox">
-                <input type="checkbox">
+                <input type="checkbox" name="standards-checked" value="{{tree}}.{{grade}}">
                   {% if grade in namemap %}
                     {{namemap[grade]}}
                   {% else %}
@@ -24,6 +50,7 @@
               </label>
             {% endfor %}
           {% else %} 
+          <p class="muted"><strong>The Common Core State Standards for Engligh/Language Arts and Literacy</strong> are organized by "strand" type. You should explore each strand below and then choose the appropriate grade levels you wish to associate with your course. When you create or edit your lessons, you will be able to choose standards that belong to the strand-grade levels you've selected below.</p>
           <div class="accordion" id="accordion2"> 
           {% for strand in ccss[tree] %}           
             <div class="accordion-group">
@@ -37,15 +64,14 @@
                 </a>
               </div>
               <div id="{{tree}}-{{strand}}" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  
+                <div class="accordion-inner">                  
                   {% for grade in ccss[tree][strand] %}
                     <label class="checkbox">
-                      <input type="checkbox">
-                        {% if grade in namemap %}
+                      <input type="checkbox" name="standards-checked" value="{{tree}}.{{strand}}.{{grade}}">
+                        {% if strand == 'CCRA' %}
+                          {{namemap['CCRA-'+grade]}}
+                        {% elif grade in namemap %}
                           {{namemap[grade]}}
-                        {% else %}
-                          {{grade}}
                         {% endif %}
                     </label>
                   {% endfor %}
@@ -57,7 +83,50 @@
           </div>  
           {% endif %}      
         </div>   
-        {% endfor %}   
+        {% endfor %} 
+        <div class="tab-pane fade in" id="teks">
+          <p class="muted"><strong>The Texas Essential Knowledge and Skills</strong> are organized by content type, then by grade level, then by course name. You should explore each strand below and then choose the appropriate grade levels and courses you wish to associate with your course. When you create or edit your lessons, you will be able to choose TEKS that belong to your selection(s) below</p>
+          <div class="accordion" id="master-accordion">
+            {% for chapter in teks %}
+            <div class="accordion-group">
+              <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#master-accordion" href="#chapter-{{chapter}}">
+                  {{teks[chapter][0]}}
+                </a>
+              </div>
+              <div id="chapter-{{chapter}}" class="accordion-body collapse">
+                <div class="accordion-inner master-inner">
+                  <!-- inner accordion -->
+                  <div class="accordion" id="slave-accordion-{{chapter}}">
+                    {% for subchapter in teks[chapter][1] %}
+                    <div class="accordion-group">
+                      <div class="accordion-heading">
+                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#slave-accordion-{{chapter}}" href="#chapter-{{chapter}}-sub-{{subchapter}}">
+                          <i class="icon-signin muted"></i> {{teks[chapter][1][subchapter][0]}}
+                        </a>
+                      </div>
+                      <div id="chapter-{{chapter}}-sub-{{subchapter}}" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                          {% for section in teks[chapter][1][subchapter][1] %}
+                            {% if 'Implementation of Texas Essential' not in teks[chapter][1][subchapter][1][section][0] %}
+                            <label class="checkbox">
+                              <input type="checkbox">
+                              {{ teks[chapter][1][subchapter][1][section][0] }}
+                            </label>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <!-- end inner accordion -->
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>  
       </div> 
     </form>  
   </div>

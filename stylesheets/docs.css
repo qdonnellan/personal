@@ -18,6 +18,22 @@ body {
   min-height: 500px
 }
 
+.accordion-toggle {
+  padding:2px 2px 2px 5px !important;
+}
+
+.accordion-heading {
+  background-color: white;
+}
+
+.master-inner {
+  background-color: #f6f6f6
+}
+
+.master-inner .accordion-inner {
+  background-color: white;
+}
+
 /* Code in headings */
 h3 code {
   font-size: 14px;

@@ -92,6 +92,8 @@ class practice(MainHandler):
     with open('ccss.json', 'rb') as f:
       ccss = json.load(f)
     f.closed
+    current_standards = self.request.get('standards')
+    current_standards = current_standards.split('|')
     namemap = {
       '1' : 'Grade 1',
       '2' : 'Grade 2', 
@@ -113,20 +115,39 @@ class practice(MainHandler):
       'HSF' : 'High School: Functions',
       'HSG' : 'High School: Geometry',
       'HSS' : 'High School: Statistics & Probability',
-      'CCRA' : 'College and Career Readiness Anchor Standards',
+      'CCRA' : 'College and Career Readiness Anchor Standards (CCRAS)',
       'RL' : 'Reading: Literature',
       'RI' : 'Reading: Informational Text',
       'RF' : 'Reading: Foundational Skills', 
       'W' : 'Writing',
       'SL' : 'Speaking & Listening',
       'L' : 'Language',
+      'R' : 'Reading',
       'WHST' : 'Writing for History/Social Studies, Science, & Technical Subjects',
-      'CCRA-R' : 'College and Career Readiness Anchor Standards for Reading',
+      'CCRA-R' : 'Anchor Standards for Reading',
+      'CCRA-W' : 'Anchor Standards for Writing',
+      'CCRA-SL' : 'Anchor Standards for Speaking & Listening',
+      'CCRA-L' : 'Anchor Standards for Language',
       
 
     }
-    self.render('practice.html', ccss=ccss, namemap = namemap)
+    with open('teks.json', 'rb') as f:
+      teks = json.load(f)
+    f.closed
+    self.render('practice.html', ccss=ccss, namemap = namemap, current_standards = current_standards, teks=teks)
+  def post(self):
+    standards = self.request.get_all('standards-checked')
+    q = 'standards='
+    for standard in standards:
+      q+= standard+'|'
+    self.redirect('/practice?%s' % q)
 
+class practiceteks(MainHandler):
+  def get(self):
+    with open('teks.json', 'rb') as f:
+      teks = json.load(f)
+    f.closed
+    self.render('practiceteks.html', teks=teks)
     
 
 app = webapp2.WSGIApplication([
@@ -135,7 +156,8 @@ app = webapp2.WSGIApplication([
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
-  ('/practice', practice),
+  ('/practice/ccss', practice),
+  ('/practice/teks', practiceteks),
   ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)
