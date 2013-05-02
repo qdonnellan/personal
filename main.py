@@ -99,7 +99,7 @@ class practice(MainHandler):
     q = 'standards='
     for standard in standards:
       q += standard + '|'
-    self.redirect('/practice/ccss?%s' % q)
+    self.redirect('/practice?%s' % q)
 
     
 
@@ -109,7 +109,7 @@ app = webapp2.WSGIApplication([
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
-  ('/practice', practice)
+  ('/practice', practice),
   ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)
