@@ -30,6 +30,10 @@ body {
   background-color: #f6f6f6
 }
 
+.math-div {
+  background-color: white !important
+}
+
 .master-inner .accordion-inner {
   background-color: white;
 }

@@ -28,6 +28,9 @@ from format_lite import formatContent
 from google.appengine.api import mail
 import logging
 import json
+import teks
+import ccss
+from fetch_standards import fetch
 
 class MainPage(MainHandler):
   def get(self):
@@ -89,65 +92,15 @@ class EditBlog(MainHandler):
 
 class practice(MainHandler):
   def get(self):
-    with open('ccss.json', 'rb') as f:
-      ccss = json.load(f)
-    f.closed
     current_standards = self.request.get('standards')
-    current_standards = current_standards.split('|')
-    namemap = {
-      '1' : 'Grade 1',
-      '2' : 'Grade 2', 
-      '3' : 'Grade 3', 
-      '4' : 'Grade 4',
-      '5' : 'Grade 5', 
-      '6' : 'Grade 6', 
-      '7' : 'Grade 7',
-      '8' : 'Grade 8', 
-      '6-8' : 'Grades 6-8', 
-      '9-10' : 'Grades 9-10',
-      '11-12' : 'Grades 11-12', 
-      'K' : 'Kindergarten', 
-      'RH' : 'History/Social Studies',
-      'RST' : 'Science & Technical Subjects',
-      'Practice' : 'Mathematical Practice',
-      'HSN' : 'High School: Number and Quantity',
-      'HSA' : 'High School: Algebra',
-      'HSF' : 'High School: Functions',
-      'HSG' : 'High School: Geometry',
-      'HSS' : 'High School: Statistics & Probability',
-      'CCRA' : 'College and Career Readiness Anchor Standards (CCRAS)',
-      'RL' : 'Reading: Literature',
-      'RI' : 'Reading: Informational Text',
-      'RF' : 'Reading: Foundational Skills', 
-      'W' : 'Writing',
-      'SL' : 'Speaking & Listening',
-      'L' : 'Language',
-      'R' : 'Reading',
-      'WHST' : 'Writing for History/Social Studies, Science, & Technical Subjects',
-      'CCRA-R' : 'Anchor Standards for Reading',
-      'CCRA-W' : 'Anchor Standards for Writing',
-      'CCRA-SL' : 'Anchor Standards for Speaking & Listening',
-      'CCRA-L' : 'Anchor Standards for Language',
-      
-
-    }
-    with open('teks.json', 'rb') as f:
-      teks = json.load(f)
-    f.closed
-    self.render('practice.html', ccss=ccss, namemap = namemap, current_standards = current_standards, teks=teks)
+    self.render('practice.html', ccss=ccss.ccss, current_standards = fetch(current_standards), teks=teks.teks)
   def post(self):
     standards = self.request.get_all('standards-checked')
     q = 'standards='
     for standard in standards:
-      q+= standard+'|'
-    self.redirect('/practice?%s' % q)
+      q += standard + '|'
+    self.redirect('/practice/ccss?%s' % q)
 
-class practiceteks(MainHandler):
-  def get(self):
-    with open('teks.json', 'rb') as f:
-      teks = json.load(f)
-    f.closed
-    self.render('practiceteks.html', teks=teks)
     
 
 app = webapp2.WSGIApplication([
@@ -156,8 +109,7 @@ app = webapp2.WSGIApplication([
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
-  ('/practice/ccss', practice),
-  ('/practice/teks', practiceteks),
+  ('/practice', practice)
   ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)
