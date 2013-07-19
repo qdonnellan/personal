@@ -24,7 +24,6 @@ import webapp2
 from handlers import MainHandler
 from google.appengine.api import users
 import database
-from format_lite import formatContent
 from google.appengine.api import mail
 import logging
 import json
@@ -62,14 +61,14 @@ class BlogPage(MainHandler):
     self.render('blog.html', 
       blog_active = "active", 
       admin = users.is_current_user_admin(),
-      blog_content = formatContent(database.getBlog(get_all = True)))
+      blog_content = database.getBlog(get_all = True))
 
 class BlogPermalink(MainHandler):
   def get(self, postID):
-    self.render('blog.html', 
+    self.render('indiv_blog.html', 
       single_post = True, 
       admin = users.is_current_user_admin(),
-      blog_content = formatContent([database.getBlog(contentID = postID)]))
+      content = database.getBlog(contentID = postID))
 
 class AuthPage(MainHandler):
   def get(self):
@@ -87,7 +86,9 @@ class EditBlog(MainHandler):
     if users.is_current_user_admin():
       title = self.request.get('title')
       body = self.request.get('body')
-      database.editBlogContent(title, body, contentID)
+      image = self.request.get('image')
+      preview = self.request.get('preview')
+      database.editBlogContent(title, body, image, preview, contentID)
       self.redirect('/blog')
 
 class practice(MainHandler):
@@ -109,7 +110,6 @@ app = webapp2.WSGIApplication([
   ('/auth', AuthPage),
   ('/edit_blog', EditBlog),
   ('/edit_blog/(\w+)', EditBlog),
-  ('/practice', practice),
   ('/(\w+)', StaticPage),
   ('.*', MainPage)
   ],debug=True)

@@ -25,17 +25,19 @@ from google.appengine.ext import ndb
 class blogContent(ndb.Model):
   title = ndb.StringProperty(required = True)
   body = ndb.TextProperty(required = False)
+  preview = ndb.TextProperty(required = False)
+  image = ndb.TextProperty(required = False)
   last_modified = ndb.DateTimeProperty(auto_now = True)
   created = ndb.DateTimeProperty(auto_now_add = True)
 
-def editBlogContent(title, body, contentID=None):
+def editBlogContent(title, body, image, preview, contentID=None):
   if contentID is None:
-    content = blogContent(title = title, body = body)
+    content = blogContent(title = title, body = body, image = image, preview = preview)
     content.put()
   else:
     key = ndb.Key(blogContent, int(contentID))
     content = key.get()
-    content.populate(title = title, body = body)
+    content.populate(title = title, body = body, image = image, preview = preview)
     content.put()
 
 def getBlog(contentID = None, get_all=False):

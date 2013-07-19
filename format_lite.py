@@ -25,62 +25,51 @@ import cgi
 import re
 import logging
 
-def formatContent(contents):
-  newContents= []
-  for content in contents:
-    newContents.append(formatted(content))        
-  return newContents
-
-class formatted():
-  def __init__(self, content):
-    # Passing everything, including the formatted body, to the new formatted class
-    self.body = shorthand(content.body)
-    self.title = content.title
-    self.id = content.key.id()
-    self.created = content.created
-
 def shorthand(body):
-  # Escaping underscore charcters before Markdown
-  body = re.sub('_', '\_', body)
+  if body:
+    # Escaping underscore charcters before Markdown
+    body = re.sub('_', '\_', body)
 
-  # Escaping user-supplied HTML injection
-  body = cgi.escape(body)
+    # Escaping user-supplied HTML injection
+    body = cgi.escape(body)
 
-  # Markdown!
-  body = markdown2.markdown(body)
+    # Markdown!
+    body = markdown2.markdown(body)
 
-  # Un-escaping underscore characters (post-Markdown)
-  body = re.sub('\_', '_', body)
+    # Un-escaping underscore characters (post-Markdown)
+    body = re.sub('\_', '_', body)
 
-  # Formatting for code blocks (post-Markdown)
-  if 'code=latex' in body:
-    body = re.sub('code=latex', '', body)
-    body = re.sub(r'<pre><code>', r'<pre class="prettyprint linenums lang-tex">', body)
-  elif 'code=blank' in body:
-    body = re.sub('code=blank', '', body)
-    body = re.sub(r'<pre><code>', r'<pre>', body)
+    # Formatting for code blocks (post-Markdown)
+    if 'code=latex' in body:
+      body = re.sub('code=latex', '', body)
+      body = re.sub(r'<pre><code>', r'<pre class="prettyprint linenums lang-tex">', body)
+    elif 'code=blank' in body:
+      body = re.sub('code=blank', '', body)
+      body = re.sub(r'<pre><code>', r'<pre>', body)
+    else:
+      body = re.sub(r'<pre><code>', r'<pre class="prettyprint linenums">', body)
+    body = re.sub(r'</code></pre>', r'</pre>', body)     
+
+    # Re-formatting double-escaped stuff (post-Markdown)
+    body = re.sub(r'&amp;lt;',r'&lt;', body)
+    body = re.sub(r'&amp;gt;',r'&gt;', body)
+    body = re.sub(r'&amp;amp;',r'&amp;', body)
+
+    quotePre = '''
+    <div class="lesson-quote well">
+    <span><i class="icon-quote-left icon-4x pull-left icon"></i></span>       
+    '''
+    if len(re.findall('quote::', body)) == len(re.findall('::quote', body)):
+      body = re.sub('quote::', quotePre, body)
+      body = re.sub('::quote', '</div>', body)
+
+    body = re.sub('cite::', '<div class="span12"><p class="pull-right lesson-citation">- ', body)
+    body = re.sub('::cite', '</p></div>', body)
+
+    # Allow the display of some shorthand by converting the temp ;-; key to :: 
+    # so that video;-; will render as video:: and so on...
+    body = re.sub(';-;', '::', body)
   else:
-    body = re.sub(r'<pre><code>', r'<pre class="prettyprint linenums">', body)
-  body = re.sub(r'</code></pre>', r'</pre>', body)     
-
-  # Re-formatting double-escaped stuff (post-Markdown)
-  body = re.sub(r'&amp;lt;',r'&lt;', body)
-  body = re.sub(r'&amp;gt;',r'&gt;', body)
-  body = re.sub(r'&amp;amp;',r'&amp;', body)
-
-  quotePre = '''
-  <div class="lesson-quote well">
-  <span><i class="icon-quote-left icon-4x pull-left icon"></i></span>       
-  '''
-  if len(re.findall('quote::', body)) == len(re.findall('::quote', body)):
-    body = re.sub('quote::', quotePre, body)
-    body = re.sub('::quote', '</div>', body)
-
-  body = re.sub('cite::', '<div class="span12"><p class="pull-right lesson-citation">- ', body)
-  body = re.sub('::cite', '</p></div>', body)
-
-  # Allow the display of some shorthand by converting the temp ;-; key to :: 
-  # so that video;-; will render as video:: and so on...
-  body = re.sub(';-;', '::', body)
+    body = ''
 
   return body

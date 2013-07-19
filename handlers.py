@@ -24,6 +24,7 @@
 import os
 import jinja2
 import webapp2
+from format_lite import shorthand
 
 template_dir=os.path.join(os.path.dirname(__file__),"templates")
 jinja_environment=jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),autoescape=True)
@@ -44,4 +45,5 @@ class MainHandler(webapp2.RequestHandler):
     self.write(self.render_str(template, 
       error = self.request.get('error'),
       success = self.request.get('success'),
+      shorthand = shorthand,
       **kw))

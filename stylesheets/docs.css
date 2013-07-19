@@ -14,8 +14,29 @@ body {
   position: relative;
   padding-top: 40px;
   font-family: 'Ubuntu', sans-serif !important;
-  font-weight: 200;
+  font-weight: 100;
   min-height: 500px
+}
+
+.blog-post p {
+  font-size: 14pt
+}
+
+.blog-preview-small p {
+  font-size: 10pt;
+}
+
+.blog-preview-small {
+  padding: 10px;
+}
+
+.blog-post h4 {
+  margin-top:0px;
+  margin-bottom: 0px;
+}
+
+.content_image {
+  text-align: center
 }
 
 .accordion-toggle {
@@ -36,6 +57,10 @@ body {
 
 .master-inner .accordion-inner {
   background-color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 100
 }
 
 /* Code in headings */
