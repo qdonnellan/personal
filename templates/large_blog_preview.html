@@ -1,0 +1,29 @@
+<div class="row-fluid">
+  {% if content.image in [None, none, 'None', ""] %}
+    <div class="span8 offset2">
+      <h1>          
+        <a class="blog-title" href="/blog/{{content.key.id()}}">{{content.title}}</a>  
+        {% if admin %}
+          <small><a href="/edit_blog/{{content.key.id()}}">[edit]</a></small>
+        {% endif %}
+      </h1>
+      <p class="muted">{{content.created | datetime}}</p>
+      <p>{{shorthand(content.preview) | safe}}</p>              
+    </div>
+  {% else %}
+    <div class="span7 content_image">
+      <img src="{{content.image}}" />
+    </div>
+    <div class="span5">
+      <h1>          
+        <a class="blog-title" href="/blog/{{content.key.id()}}">{{content.title}}</a>        
+        {% if admin %}
+          <small><a href="/edit_blog/{{content.key.id()}}">[edit]</a></small>
+        {% endif %}
+      </h1>
+      <p class="muted">{{content.created | datetime}}</p>
+      <p>{{shorthand(content.preview) | safe}}</p>              
+    </div>
+  {% endif %}
+</div>
+<hr>
