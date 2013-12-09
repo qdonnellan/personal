@@ -1,13 +1,15 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
 
 var viewModel = {
-  content: ko.observable("nothing here yet"),
-  title: ko.observable("no title set yet")
+  month: ko.observable('08'),
+  html: ko.observable('no content yet'),
 };
 
-$.getJSON('/api/blog/2013/07/21', function(data) {
-   ko.mapping.fromJS(data, {}, viewModel);
+$("#thebutton").click(function () {
+  $.getJSON("/api/blog/2013/07/21", function (result) {
+    viewModel.month(result.month);
+    viewModel.html(result.html);
+  });
 });
 
 ko.applyBindings(viewModel); // This makes Knockout get to work
-

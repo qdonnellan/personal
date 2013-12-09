@@ -1,13 +1,14 @@
 from handlers import MainHandler
-
 import os
 import json
 import re
+from markdown2 import markdown
 
 class blogAPI(MainHandler):
   def get(self, year, month, day):
     data = self.fetch_blog_post(year, month, day)
-    self.write(data)
+    self.response.headers['Content-Type'] = 'application/json' 
+    self.response.out.write(data)
 
   def fetch_blog_post(self, year, month, day):
     # returns JSON object of blog post
@@ -34,14 +35,16 @@ class blogAPI(MainHandler):
     else:
       author = 'Quentin Donnellan'
 
-    blog_data = re.sub(title, '', blog_data)
+    blog_data = re.sub(title, '', blog_data).strip('\n')
+    
     title = re.sub('[#]', '', title).strip('\n')
     data = {
       'year' : year,
       'day' : day, 
       'month' : month,
       'author' : author.strip(' '),
-      'content' : blog_data.strip('\n'),
+      'markdown' : blog_data,
+      'html' : markdown(blog_data),
       'title' : title.strip(' ')
       }
 
