@@ -1,0 +1,54 @@
+.navbar-fixed-top {
+  background-color: #777;
+  border: none;
+}
+
+.navbar-logo {
+  font-size: 6em;
+  background-color: #555;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #ffffff;
+  font-family: 'Trade Winds', cursive;
+}
+
+.navbar-info {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.navbar-info p {
+  padding: 0px;
+  margin: 0px;
+  color: #ffffff;
+}
+
+.navbar-info > .navbar-name {
+  font-size: 2.5em;
+  font-weight: 300
+}
+
+.navbar-info > .navbar-description {
+  font-weight: 300;
+  font-size: 1.2em
+}
+
+.navbar-right > li > a {
+  color: #e6e6e6 !important;
+  font-weight: 300;
+  font-size: 1.2em
+}
+
+.navbar-right > li > a:hover {
+  color: #fff !important;
+
+}
+
+.navbar-right > li > a > p {
+  text-align: center;
+  font-size: 2em
+}
+
+.navbar-right {
+  padding-top: 15px
+}
