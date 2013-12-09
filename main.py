@@ -23,11 +23,19 @@
 import webapp2
 from handlers import MainHandler
 import logging
+import markdown2
+import blog
 
 class MainPage(MainHandler):
   def get(self):
     self.render('home.html', home_active ="active")
 
+class blogAPI(MainHandler):
+  def get(self, year, month, day):
+    data = blog.api().fetch_blog_post(year, month, day)
+    self.write(data)
+
 app = webapp2.WSGIApplication([
+  ('/api/blog/(\w+)/(\w+)/(\w+)', blogAPI),
   ('.*', MainPage)
   ],debug=True)
