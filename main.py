@@ -23,13 +23,8 @@
 import webapp2
 from handlers import MainHandler
 from google.appengine.api import users
-import database
 from google.appengine.api import mail
 import logging
-import json
-import teks
-import ccss
-from fetch_standards import fetch
 
 class MainPage(MainHandler):
   def get(self):
