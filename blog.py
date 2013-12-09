@@ -1,8 +1,14 @@
+from handlers import MainHandler
+
 import os
 import json
 import re
 
-class api():
+class blogAPI(MainHandler):
+  def get(self, year, month, day):
+    data = self.fetch_blog_post(year, month, day)
+    self.write(data)
+
   def fetch_blog_post(self, year, month, day):
     # returns JSON object of blog post
     # blog posts are stored in ../blog_files/YEAR/MONTH/DAY.md
