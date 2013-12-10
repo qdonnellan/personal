@@ -26,17 +26,22 @@ $(".blog-link").click(function () {
   });
 });
 
-ko.applyBindings(viewModel); // This makes Knockout get to work
-
-
 // blog typehead stuff
-$('.typeahead').typeahead({                              
+$('.blog-content .typeahead').typeahead({                              
   name: 'blog-list',                                                      
-  prefetch: '/blog_map.json',
-  template: [                                                                 
-    '<p class="repo-language">{{language}}</p>',                              
-    '<p class="repo-name">{{name}}</p>',                                      
-    '<p class="repo-description">{{description}}</p>'                         
+  prefetch: '/blogmap.json',
+  template: [                                                           
+    '<p class="tt-blog-name">{{name}}</p>',                                      
+    '<p class="tt-blog-date">{{date}}</p>'                         
   ].join(''),                                                                 
-  engine: Hogan                                                     
+  engine: Hogan                                             
 });
+
+$('#search-input').bind('typeahead:selected', function(obj, datum, name) {      
+    blog_ref = datum.reference;
+    $.getJSON(blog_ref, function (result) {
+      updateViewModel(result)
+    });
+});
+
+ko.applyBindings(viewModel); // This makes Knockout get to work
