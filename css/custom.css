@@ -62,9 +62,10 @@
   margin-top: 150px
 }
 
-.blog-content {
+.blog-text {
   font-size: 1.7em;
-  font-weight: 200
+  font-weight: 200;
+  text-align: justify;
 }
 
 .typeahead {
@@ -106,25 +107,22 @@
   padding: 8px 20px;
 }
 
-.blog-content .tt-suggestion + .tt-suggestion {
+#blog .tt-suggestion + .tt-suggestion {
   border-top: 1px solid #ccc;
 }
 
-.blog-content .tt-blog-name {
+#blog  .tt-blog-name {
   font-weight: bold;
 }
 
-.blog-content .tt-blog-date {
+#blog  .tt-blog-date {
   font-size: 0.7em 
-}
-
-.blog-text {
-  text-align: justify;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 100px
+  padding-bottom: 100px;
+  padding-top: 100px
 }
 
 .blog-header input {
@@ -133,9 +131,13 @@
 }
 
 .section-header h1 {
-  font-weight: 300;
-  font-size: 4em;
+  font-weight: 300 !important;
+  font-size: 6em;
   color: #999;
+}
+
+.blog-header h1 {
+  margin-bottom: 50px
 }
 
 .blog-header i {

@@ -2,14 +2,18 @@
 
 var viewModel = {
   month: ko.observable(''),
-  html: ko.observable(''),
-  title: ko.observable(''),
+  year: ko.observable(''),
+  day: ko.observable(''),
+  html: ko.observable('<h1 class="text-muted"><i class="fa fa-cog fa-spin"></i> loading...</h1>'),
+  title: ko.observable('')
 };
 
 function updateViewModel(data) {
   viewModel.month(data.month);
   viewModel.html(data.html);
   viewModel.title(data.title);
+  viewModel.year(data.year);
+  viewModel.day(data.day);
 }
 
 $.getJSON("/api/blog/latest", function (result) {
@@ -27,7 +31,7 @@ $(".blog-link").click(function () {
 });
 
 // blog typehead stuff
-$('.blog-content .typeahead').typeahead({                              
+$('#blog .typeahead').typeahead({                              
   name: 'blog-list',                                                      
   prefetch: '/blogmap.json',
   template: [                                                           
