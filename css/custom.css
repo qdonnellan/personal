@@ -1,4 +1,5 @@
 
+
 .navbar-fixed-top {
   background-color: #777;
   border: none;
@@ -119,10 +120,14 @@
   font-size: 0.7em 
 }
 
+#blog {
+  margin-bottom: 200px
+}
+
 .section-header {
   text-align: center;
   padding-bottom: 100px;
-  padding-top: 100px
+  padding-top: 150px
 }
 
 .blog-header input {
@@ -131,7 +136,8 @@
 }
 
 .section-header h1 {
-  font-weight: 300 !important;
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif;
   font-size: 6em;
   color: #999;
 }
@@ -142,4 +148,12 @@
 
 .blog-header i {
   color: #33ccff
+}
+
+#portfolio {
+  background-color: #555
+}
+
+#portfolio h1 {
+  color: #ffffff;
 }

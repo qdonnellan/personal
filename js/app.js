@@ -1,11 +1,12 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
 
+
 var viewModel = {
   month: ko.observable(''),
   year: ko.observable(''),
   day: ko.observable(''),
   html: ko.observable('<h1 class="text-muted"><i class="fa fa-cog fa-spin"></i> loading...</h1>'),
-  title: ko.observable('')
+  title: ko.observable()
 };
 
 function updateViewModel(data) {
@@ -49,3 +50,22 @@ $('#search-input').bind('typeahead:selected', function(obj, datum, name) {
 });
 
 ko.applyBindings(viewModel); // This makes Knockout get to work
+
+// smooth scrolling...
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        || location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
