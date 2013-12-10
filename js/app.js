@@ -1,7 +1,7 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
 
 
-var viewModel = {
+var blogViewModel = {
   month: ko.observable(''),
   year: ko.observable(''),
   day: ko.observable(''),
@@ -9,27 +9,20 @@ var viewModel = {
   title: ko.observable()
 };
 
-function updateViewModel(data) {
-  viewModel.month(data.month);
-  viewModel.html(data.html);
-  viewModel.title(data.title);
-  viewModel.year(data.year);
-  viewModel.day(data.day);
+function updateBlogViewModel(data) {
+  blogViewModel.month(data.month);
+  blogViewModel.html(data.html);
+  blogViewModel.title(data.title);
+  blogViewModel.year(data.year);
+  blogViewModel.day(data.day);
+  $('[data-spy="scroll"]').each(function () {
+    var $spy = $(this).scrollspy('refresh')
+  });
 }
 
 $.getJSON("/api/blog/latest", function (result) {
-    updateViewModel(result)
+    updateBlogViewModel(result)
   });
-
-// retriece the blog when its link is clicked
-// link will contain a rel attribute that looks like /api/blog/2013/07/21
-// this attribute identifies the blog when the api call is made
-$(".blog-link").click(function () {
-  blog_ref = $(this).attr("rel")
-  $.getJSON(blog_ref, function (result) {
-    updateViewModel(result)
-  });
-});
 
 // blog typehead stuff
 $('#blog .typeahead').typeahead({                              
@@ -45,11 +38,11 @@ $('#blog .typeahead').typeahead({
 $('#search-input').bind('typeahead:selected', function(obj, datum, name) {      
     blog_ref = datum.reference;
     $.getJSON(blog_ref, function (result) {
-      updateViewModel(result)
+      updateBlogViewModel(result)
     });
 });
 
-ko.applyBindings(viewModel); // This makes Knockout get to work
+ko.applyBindings(blogViewModel); // This makes Knockout get to work
 
 // smooth scrolling...
 

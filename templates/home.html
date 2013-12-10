@@ -11,8 +11,8 @@
       </div>
     </div>
     <div class="col-md-10 col-md-offset-1">
-      <h1 data-bind="text: viewModel.title"></h1>
-      <div data-bind="html: viewModel.html" class="blog-text"></div>
+      <h1 data-bind="text: blogViewModel.title"></h1>
+      <div data-bind="html: blogViewModel.html" class="blog-text"></div>
     </div>
   </div>
   <!-- end blog -->
@@ -24,11 +24,25 @@
   <!-- end portfolio -->
 
 <div id="portfolio">
-  <div>
+  <div class="row">
     <div class="portfolio-header section-header">
       <h1>portfolio</h1>
     </div>
-    
+    <div class="briefcase">
+      <div class="col-md-4 product-details">
+        <h2>lessonwell</h2>
+        <p>
+          <a href="http://www.lessonwell.com" target="_blank">
+            <i class="fa fa-external-link"></i> www.lessonwell.com
+          </a>
+        </p>
+        <p>I built lessonwell to make my life easier - it grew into a platform that many other teachers have found useful as well. Lessonwell allows me to quickly develop lessons with minimal effort and ensures that all my students, on any device, will be able to access those lesson.</p>
+        <p><strong>Python, Google App Engine, Twitter Bootstrap, Mercurial</strong></p>
+      </div>
+      <div class="col-md-8">
+        <img src="/img/lessonwell_ss.png" class="img-responsive">
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}

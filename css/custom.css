@@ -142,6 +142,11 @@
   color: #999;
 }
 
+.briefcase h2 {
+  font-weight: 300 !important;
+  font-family: 'Roboto', sans-serif;
+}
+
 .blog-header h1 {
   margin-bottom: 50px
 }
@@ -150,8 +155,22 @@
   color: #33ccff
 }
 
-#portfolio {
-  background-color: #555
+#portfolio, #portfolio div {
+  background-color: #555 !important;
+  color: #ffffff;
+}
+
+.briefcase > .product-details {
+  padding: 50px;
+}
+
+.briefcase p {
+  font-size: 1.2em;
+  font-weight: 300
+}
+
+.briefcase a {
+  color:  #33ccff
 }
 
 #portfolio h1 {
