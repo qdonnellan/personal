@@ -1,14 +1,25 @@
 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
 
 var viewModel = {
-  month: ko.observable('08'),
-  html: ko.observable('no content yet'),
+  month: ko.observable(''),
+  content: ko.observable(''),
+  title: ko.observable(''),
 };
 
-$("#thebutton").click(function () {
-  $.getJSON("/api/blog/2013/07/21", function (result) {
-    viewModel.month(result.month);
-    viewModel.html(result.html);
+function updateViewModel(data) {
+  viewModel.month(data.month);
+  viewModel.content(data.content);
+  viewModel.title(data.title);
+}
+
+$.getJSON("/api/blog/latest", function (result) {
+    updateViewModel(result)
+  });
+
+$(".blog-link").click(function () {
+  blog_ref = $(this).attr("rel")
+  $.getJSON(blog_ref, function (result) {
+    updateViewModel(result)
   });
 });
 

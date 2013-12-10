@@ -2,13 +2,23 @@ from handlers import MainHandler
 import os
 import json
 import re
-from markdown2 import markdown
 
 class blogAPI(MainHandler):
-  def get(self, year, month, day):
+  def get(self, year=None, month=None, day=None):
+    if year == 'latest':
+      year, month, day = '2013', '07', '21'
     data = self.fetch_blog_post(year, month, day)
     self.response.headers['Content-Type'] = 'application/json' 
-    self.response.out.write(data)
+    self.response.out.write(json.dumps(data))
+
+  def active_blogs(self):
+    active_list = [
+      ('2013', '07', '21'),
+      ('2013', '07', '19'),
+      ('2013', '03', '27'),
+    ]
+    active_list = [self.fetch_blog_post(year, month, day) for year, month, day in active_list]
+    return active_list
 
   def fetch_blog_post(self, year, month, day):
     # returns JSON object of blog post
@@ -43,10 +53,8 @@ class blogAPI(MainHandler):
       'day' : day, 
       'month' : month,
       'author' : author.strip(' '),
-      'markdown' : blog_data,
-      'html' : markdown(blog_data),
+      'content' : blog_data,
       'title' : title.strip(' ')
       }
 
-    data = json.dumps(data)
     return data

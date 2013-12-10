@@ -24,13 +24,19 @@
 import os
 import jinja2
 import webapp2
+import markdown2
 
 template_dir=os.path.join(os.path.dirname(__file__),"templates")
 jinja_environment=jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),autoescape=True)
 
 def format_datetime(value):
-    return value.strftime('%B %d, %Y')
+  return value.strftime('%B %d, %Y')
+
+def markdown(content):
+  return markdown2.markdown(content)
+
 jinja_environment.filters['datetime'] = format_datetime
+jinja_environment.filters['markdown'] = markdown
 
 class MainHandler(webapp2.RequestHandler):
   def write(self, *a, **kw):
