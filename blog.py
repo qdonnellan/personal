@@ -2,6 +2,7 @@ from handlers import MainHandler
 import os
 import json
 import re
+import markdown2
 
 class blogAPI(MainHandler):
   def get(self, year=None, month=None, day=None):
@@ -9,19 +10,10 @@ class blogAPI(MainHandler):
       year, month, day = '2013', '07', '21'
     data = self.fetch_blog_post(year, month, day)
     self.response.headers['Content-Type'] = 'application/json' 
-    self.response.out.write(json.dumps(data))
-
-  def active_blogs(self):
-    active_list = [
-      ('2013', '07', '21'),
-      ('2013', '07', '19'),
-      ('2013', '03', '27'),
-    ]
-    active_list = [self.fetch_blog_post(year, month, day) for year, month, day in active_list]
-    return active_list
+    self.response.out.write(data)
 
   def fetch_blog_post(self, year, month, day):
-    # returns JSON object of blog post
+    # returns dictionary object of blog post
     # blog posts are stored in ../blog_files/YEAR/MONTH/DAY.md
     # blog posts should be writtne in the form of:
     #--:
@@ -53,8 +45,8 @@ class blogAPI(MainHandler):
       'day' : day, 
       'month' : month,
       'author' : author.strip(' '),
-      'content' : blog_data,
+      'markdown' : blog_data,
+      'html' : markdown2.markdown(blog_data),
       'title' : title.strip(' ')
       }
-
-    return data
+    return json.dumps(data)

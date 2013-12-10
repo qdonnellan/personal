@@ -18,6 +18,11 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /blog_map\.json
+  mime_type: application/json
+  static_files: blog_map.json
+  upload: blog_map\.json
+
 - url: .*
   script: main.app
 
