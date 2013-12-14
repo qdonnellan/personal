@@ -1,44 +1,51 @@
 
-
 .navbar-fixed-top {
-  background-color: #777;
+  background-color: #141c26;
   border: none;
+  color: #e6e6e6;
+  padding-right: 20px;
 }
 
 .navbar-logo {
-  font-size: 6em;
+  font-size: 3em;
   background-color: #555;
   padding-left: 20px;
   padding-right: 20px;
   color: #ffffff;
+  height: 60px;
   font-family: 'Trade Winds', cursive;
 }
 
 .navbar-info {
-  padding-top: 20px;
+  padding-top: 0px;
   padding-left: 20px;
 }
 
-.navbar-info p {
-  padding: 0px;
-  margin: 0px;
-  color: #ffffff;
-}
-
 .navbar-info > .navbar-name {
-  font-size: 2.5em;
-  font-weight: 300
+  font-size: 1.8em;
+  font-weight: 300;
+  color: #4ddbb8;
+  padding: 0px; 
+  margin: 0px;
 }
 
 .navbar-info > .navbar-description {
-  font-weight: 300;
-  font-size: 1.2em
+  font-family: 'Source Code Pro', sans-serif;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1em
+}
+
+.navbar-right > li {
+  height: 60px;
 }
 
 .navbar-right > li > a {
   color: #e6e6e6 !important;
   font-weight: 300;
-  font-size: 1.2em
+  height: 60px;
+  font-size: 2em;
+  border-top: 2px solid #141c26;
 }
 
 .navbar-right > li > a:hover {
@@ -46,17 +53,9 @@
 }
 
 .navbar-right > .active > a {
-  background-color: #777 !important;
-  color: #33ccff !important;
-}
-
-.navbar-right > li > a > p {
-  text-align: center;
-  font-size: 2em
-}
-
-.navbar-right {
-  padding-top: 15px
+  background-color: #141c26 !important;
+  border-top: 2px solid #4ddbb8;
+  color: #4ddbb8 !important;
 }
 
 .page-content {
@@ -96,7 +95,7 @@
 
 .tt-suggestion.tt-is-under-cursor {
   color: #fff;
-  background-color: #0097cf;
+  background-color: #4ddbb8;
 
 }
 .tt-suggestion p {
@@ -127,7 +126,7 @@
 .section-header {
   text-align: center;
   padding-bottom: 100px;
-  padding-top: 150px
+  padding-top: 100px
 }
 
 .blog-header input {
@@ -148,6 +147,7 @@
 }
 
 .blog-header h1 {
+  color: #4ddbb8;
   margin-bottom: 50px
 }
 
@@ -156,8 +156,27 @@
 }
 
 #portfolio, #portfolio div {
-  background-color: #555 !important;
   color: #ffffff;
+}
+
+.portfolio-teaching {
+  background: linear-gradient(to top right, #00003d, #000029);
+}
+
+.portfolio-teaching a {
+  color: #4ddbb8 !important
+}
+
+.portfolio-teaching h1 {
+  color: #4ddbb8 !important
+}
+
+.portfolio-web {
+  background-color: #141c26;
+}
+
+.portfolio-web h1 {
+  color: #4ddbb8 !important
 }
 
 .briefcase > .product-details {
@@ -169,9 +188,10 @@
   font-weight: 300
 }
 
-.briefcase a {
-  color:  #33ccff
+.briefcase {
+  margin-bottom: 600px !important
 }
+
 
 #portfolio h1 {
   color: #ffffff;
