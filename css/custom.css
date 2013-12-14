@@ -165,6 +165,14 @@
   color: #4ddbb8 !important
 }
 
+.portfolio-entrepreneur {
+  background-color: #f6f6f6;
+}
+
+.portfolio-entrepreneur h1 {
+  color: #4ddbb8 !important
+}
+
 .briefcase > .product-details {
   padding: 50px;
 }
