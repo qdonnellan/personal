@@ -161,6 +161,10 @@
   background-color: #141c26;
 }
 
+.portfolio-web a {
+  color: #4ddbb8 !important;
+}
+
 .portfolio-web h1 {
   color: #4ddbb8 !important
 }
@@ -214,7 +218,28 @@
   padding-bottom: 100px
 }
 
+.icon-links > a {
+  color: #fff;
+  font-size: 1em !important
+}
 
+.btn-theme:hover {
+  background-color: #4ddbb8;
+  color: #fff !important;
+}
+
+.btn-theme i {
+  font-size: 1.5em !important
+}
+
+.btn-theme {
+  border: 1px solid #4ddbb8;;
+}
+
+.section-description {
+  font-weight: 300;
+  font-size: 1.4em;
+}
 /* Brands */
 
 .lessonwell-brand {
