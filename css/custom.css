@@ -166,11 +166,15 @@
 }
 
 .portfolio-entrepreneur {
-  background-color: #f6f6f6;
+  background-color: #ffffff;
 }
 
 .portfolio-entrepreneur h1 {
-  color: #4ddbb8 !important
+  color: #4ddbb8 !important;
+}
+
+.portfolio-entrepreneur .briefcase p {
+  color: #111;
 }
 
 .briefcase > .product-details {
@@ -190,3 +194,60 @@
 #portfolio h1 {
   color: #ffffff;
 }
+
+.portfolio-entrepreneur .product-logo img {
+  height:  100%;
+  padding-top:20px;
+  padding-bottom: 20px;
+}
+
+.portfolio-entrepreneur .product-logo {
+  height: 250px !important;
+  text-align: center;
+}
+
+.portfolio-entrepreneur .product-logo p {
+  text-align: center;
+}
+
+.portfolio-entrepreneur {
+  padding-bottom: 100px
+}
+
+
+/* Brands */
+
+.lessonwell-brand {
+  padding-top: 30%;
+  font-family: 'Ubuntu', sans-serif !important;
+  color: #111 !important;
+  font-weight: 700 !important;
+  font-size: 2.5em !important
+}
+
+.lessonwell-brand > span {
+  font-weight: 300;
+  color: #0099ff;
+}
+
+.honeschool-brand  {
+  padding-top: 30%;
+  font-weight: 400 !important;
+  font-size: 2.5em !important;
+  color: #222!important;
+  font-family: 'Days One', sans-serif !important;
+}
+
+.honeschool-brand > span {
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.science-council-brand {
+  text-align: left !important;
+  line-height: 80%;
+  padding-top: 20%;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 4em !important
+}
+
