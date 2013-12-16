@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="container page-content">
 
-  <!-- blog -->
+<div class="container page-content">
+  <div class="section-header">
+    <h1>under construction</h1>
+    <p class="lead">still a work in progress here...</p>
+  </div>
+</div>
+
+<!-- blog -->
+<div class="container page-content">
   <div class="row" id="blog">
     <div class="blog-header section-header">
       <h1>blog</h1>
@@ -15,14 +22,8 @@
       <div data-bind="html: blogViewModel.html" class="blog-text"></div>
     </div>
   </div>
-  <!-- end blog -->
-
-  <!-- protfolio -->
-  
 </div>
-
-  <!-- end portfolio -->
-
+<!-- end blog -->
 <div id="portfolio">
   <div class="col-md-12 portfolio-teaching" id="teaching">
     {% include 'teaching_div.html' %}
