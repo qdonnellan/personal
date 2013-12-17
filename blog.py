@@ -1,3 +1,7 @@
+# Copyright (C) 2013 Quentin Donnellan
+# License: MIT (http://opensource.org/licenses/MIT)
+# www.qdonnellan.com
+
 from handlers import MainHandler
 import os
 import json

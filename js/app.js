@@ -1,5 +1,6 @@
-// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
-
+// Copyright (C) 2013 Quentin Donnellan
+// License: MIT (http://opensource.org/licenses/MIT)
+// www.qdonnellan.com
 
 var blogViewModel = {
   month: ko.observable(''),
