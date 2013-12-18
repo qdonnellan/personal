@@ -241,6 +241,10 @@
   border: 1px solid #4ddbb8;;
 }
 
+.portfolio-entrepreneur .section-description {
+  color: #111 !important;
+}
+
 .section-description {
   font-weight: 300;
   font-size: 1.4em;
