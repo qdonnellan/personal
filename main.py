@@ -4,8 +4,6 @@
 
 import webapp2
 from handlers import MainHandler
-import logging
-import markdown2
 from blog import blogAPI
 
 class MainPage(MainHandler):
