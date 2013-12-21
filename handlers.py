@@ -9,11 +9,6 @@ import webapp2
 template_dir=os.path.join(os.path.dirname(__file__),"templates")
 jinja_environment=jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),autoescape=True)
 
-def format_datetime(value):
-  return value.strftime('%B %d, %Y')
-  
-jinja_environment.filters['datetime'] = format_datetime
-
 class MainHandler(webapp2.RequestHandler):
   def write(self, *a, **kw):
     self.response.out.write(*a, **kw)
