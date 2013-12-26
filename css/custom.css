@@ -271,7 +271,7 @@
 }
 
 .btn-theme {
-  border: 1px solid #4ddbb8;;
+  border: 1px solid #4ddbb8;
 }
 
 .portfolio-entrepreneur .section-description {
@@ -318,3 +318,30 @@
   font-size: 4em !important
 }
 
+#contact h1 {
+  color: #4ddbb8;
+}
+
+#contact {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+#contact .contact-links {
+  font-size: 2em;
+  font-weight: 300
+}
+
+.contact-links a {
+  color: #111;
+}
+
+.contact-links a:hover {
+  color: #4ddbb8;
+  text-decoration: none
+}
+
+.contact-links i {
+  font-size: 2.5em;
+  color: #4ddbb8;
+}
