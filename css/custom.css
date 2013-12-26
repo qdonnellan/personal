@@ -23,7 +23,6 @@
   padding: 0px; 
   padding-top: 20px;
   margin: 0px;
-
   font-family: 'Roboto', sans-serif;
 }
 
@@ -47,6 +46,40 @@
   background-color: #141c26 !important;
   border-top: 2px solid #4ddbb8;
   color: #4ddbb8 !important;
+}
+
+.top-div {
+  background-color: #141c26;
+  padding-top: 200px;
+  padding-bottom: 400px;
+  margin-top: 0px
+}
+
+.top-div .top-name > h1{
+  text-align: left;
+  padding-top: 0px;
+  margin-top: 0px;
+  color: #4ddbb8;
+  font-size: 5em
+}
+
+.top-div .top-description > p {
+  text-align: right;
+  color: #f6f6f6;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.top-icon {
+  text-align: center;
+  color: #4ddbb8;
+  font-size: 3em;
+  margin-top: 200px
+}
+
+
+.top-description {
+  padding-top:10px;
 }
 
 .page-content {
@@ -278,7 +311,7 @@
 }
 
 .science-council-brand {
-  text-align: left !important;
+  text-align: center;
   line-height: 80%;
   padding-top: 20%;
   font-family: 'Averia Serif Libre', cursive;
