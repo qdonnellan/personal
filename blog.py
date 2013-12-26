@@ -11,10 +11,14 @@ import markdown2
 class blogAPI(MainHandler):
   def get(self, year=None, month=None, day=None):
     if year == 'latest':
-      year, month, day = '2013', '07', '21'
-    data = self.fetch_blog_post(year, month, day)
+      data = self.get_latest()
+    else:
+      data = self.fetch_blog_post(year, month, day)
     self.response.headers['Content-Type'] = 'application/json' 
     self.response.out.write(data)
+
+  def get_latest(self):
+    return self.fetch_blog_post('2013', '07', '21')
 
   def fetch_blog_post(self, year, month, day):
     # returns dictionary object of blog post
