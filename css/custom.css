@@ -21,21 +21,32 @@
   font-weight: 400;
   color: #fff;
   padding: 0px; 
-  padding-top: 20px;
+  padding-top: 30px;
   margin: 0px;
   font-family: 'Roboto', sans-serif;
 }
 
+.navbar-info > .navbar-name > span {
+  color: #4ddbb8;
+  font-weight: 700
+}
+
 .navbar-right > li {
-  height: 60px;
+  height: 80px;
 }
 
 .navbar-right > li > a {
   color: #e6e6e6 !important;
   font-weight: 300;
-  height: 60px;
+  height: 80px;
   font-size: 2em;
+  text-align: center;
   border-top: 2px solid #141c26;
+}
+
+.navbar-right > li > a > span {
+  font-size: 0.5em !important;
+  font-weight: 400
 }
 
 .navbar-right > li > a:hover {
@@ -171,7 +182,7 @@
 }
 
 .blog-header h1 {
-  color: #4ddbb8;
+  color: #369981;
   margin-bottom: 50px
 }
 
@@ -212,7 +223,7 @@
 }
 
 .portfolio-entrepreneur h1 {
-  color: #4ddbb8 !important;
+  color: #369981 !important;
 }
 
 .portfolio-entrepreneur .briefcase p {
@@ -319,7 +330,7 @@
 }
 
 #contact h1 {
-  color: #4ddbb8;
+  color: #369981;
 }
 
 #contact {
