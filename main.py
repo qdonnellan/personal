@@ -5,6 +5,7 @@
 import webapp2
 from handlers import MainHandler
 from blog import blogAPI
+import json
 
 class MainPage(MainHandler):
   def get(self):
@@ -12,7 +13,8 @@ class MainPage(MainHandler):
 
 class BlogPage(MainHandler):
   def get(self):
-    self.render('blog.html', home_active ="active", page_name = "blog")
+    blogJSON = json.loads(blogAPI().get_latest())
+    self.render('blog.html', home_active ="active", page_name = "blog", blogJSON = blogJSON)
 
 app = webapp2.WSGIApplication([
   ('/api/blog/(\w+)/(\w+)/(\w+)', blogAPI),
