@@ -10,8 +10,13 @@ class MainPage(MainHandler):
   def get(self):
     self.render('home.html', home_active ="active")
 
+class BlogPage(MainHandler):
+  def get(self):
+    self.render('blog.html', home_active ="active", page_name = "blog")
+
 app = webapp2.WSGIApplication([
   ('/api/blog/(\w+)/(\w+)/(\w+)', blogAPI),
   ('/api/blog/(\w+)', blogAPI),
+  ('/blog', BlogPage),
   ('.*', MainPage)
   ],debug=True)
