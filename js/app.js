@@ -28,7 +28,7 @@ $.getJSON("/api/blog/latest", function (result) {
 // blog typehead stuff
 $('#blog .typeahead').typeahead({                              
   name: 'blog-list',                                                      
-  prefetch: '/blogmap.json',
+  prefetch: '/api/blog/map',
   template: [                                                           
     '<p class="tt-blog-name">{{name}}</p>',                                      
     '<p class="tt-blog-date">{{date}}</p>'                         
@@ -45,8 +45,7 @@ $('#search-input').bind('typeahead:selected', function(obj, datum, name) {
 
 ko.applyBindings(blogViewModel); // This makes Knockout get to work
 
-// smooth scrolling...
-
+// smooth scrolling from one #id to another #id on the page
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
