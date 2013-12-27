@@ -12,6 +12,8 @@ class blogAPI(MainHandler):
   def get(self, year=None, month=None, day=None):
     if year == 'latest':
       data = self.get_latest()
+    elif year == 'map':
+      data = self.get_map()
     else:
       data = self.fetch_blog_post(year, month, day)
     self.response.headers['Content-Type'] = 'application/json' 
@@ -19,6 +21,14 @@ class blogAPI(MainHandler):
 
   def get_latest(self):
     return self.fetch_blog_post('2013', '07', '21')
+
+  def get_map(self):
+    blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
+    path = blog_dir + "/blogmap.json"
+    with open(path, 'r') as f:
+      blog_map = f.read()
+    f.closed
+    return blog_map
 
   def fetch_blog_post(self, year, month, day):
     # returns dictionary object of blog post
