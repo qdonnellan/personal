@@ -31,4 +31,4 @@ app = webapp2.WSGIApplication([
   ('/blog/(\w+)/(\w+)/(\w+)', BlogPage),
   ('/blog', BlogPage),
   ('.*', MainPage)
-  ],debug=True)
+  ],debug=False)
