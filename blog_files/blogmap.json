@@ -1,14 +1,20 @@
 [
   {
-    "name": "Harkness Discussion in a class of 30",
-    "date": "March 7, 2013",
-    "reference": "/api/blog/2013/03/27",
-    "tokens": ["harkness","discussion","class","30","march","2013"]
+    "name": "Revisiting Harkness Discussion",
+    "date": "July 21, 2013",
+    "reference": "/api/blog/2013/07/21",
+    "tokens": ["harkness","discussion","class","july","2013"]
   },
   {
     "name": "Exeter Astronomy Conference 2013",
     "date": "July 19, 2013",
     "reference": "/api/blog/2013/07/19",
     "tokens": ["harkness","discussion","exeter","july","2013", "astronomy"]
+  },
+  {
+    "name": "Harkness Discussion in a class of 30",
+    "date": "March 7, 2013",
+    "reference": "/api/blog/2013/03/27",
+    "tokens": ["harkness","discussion","class","30","march","2013"]
   }
 ]
