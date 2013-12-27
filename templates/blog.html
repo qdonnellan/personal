@@ -3,8 +3,10 @@
 {% block body %}
 <div class="container blog-contents">
   <div class="col-sm-3">
-    {% for post in blogMAP | sort(attribute='reference') %}
-      <a href="{{ post['reference'] | replace('/api', '' )}}">{{ post['name'] }}</a>
+    {% for post in blogMAP | sort(attribute='reference', reverse=True) %}
+      <p>
+        {{ post['date'] }} <br><a href="{{ post['reference'] | replace('/api', '' )}}">{{ post['name'] }}</a>
+      </p>
     {% endfor %}
   </div>
   <div class="col-sm-9">
