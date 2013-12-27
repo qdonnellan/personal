@@ -360,4 +360,17 @@
 .blog-contents {
   margin-top: 80px;
   padding-top: 100px;
+  padding-bottom: 200px;
+}
+
+.footer-div {
+  background-color:  #141c26;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: #f6f6f6;
+}
+
+.footer-div a {
+  color: #4ddbb8;
 }
