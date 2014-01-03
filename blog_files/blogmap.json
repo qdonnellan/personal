@@ -1,5 +1,11 @@
 [
   {
+    "name": "10 Posts in 10 Days",
+    "date": "January 3, 2014",
+    "reference": "/api/blog/2014/01/03",
+    "tokens": ["blog","resolution","writing","10","days","posts"]
+  },
+  {
     "name": "Revisiting Harkness Discussion",
     "date": "July 21, 2013",
     "reference": "/api/blog/2013/07/21",
