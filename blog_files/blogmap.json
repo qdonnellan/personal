@@ -1,5 +1,11 @@
 [
   {
+    "name": "Unit tests: I finally get it!",
+    "date": "January 5, 2014",
+    "reference": "/api/blog/2014/01/05",
+    "tokens": ["coding", "software", "unittest", "python", "web", "development", "tests"]
+  },
+  {
     "name": "Doing Harkness Discussion Everyday",
     "date": "January 4, 2014",
     "reference": "/api/blog/2014/01/04",
