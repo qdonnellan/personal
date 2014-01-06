@@ -20,7 +20,7 @@ class blogAPI(MainHandler):
     self.response.out.write(data)
 
   def get_latest(self):
-    return self.fetch_blog_post('2014', '01', '05')
+    return self.fetch_blog_post('2014', '01', '06')
 
   def get_map(self):
     blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
@@ -46,7 +46,7 @@ class blogAPI(MainHandler):
     with open(blog_path, 'r') as f:
       blog_data = f.read()
     f.closed
-    title = re.search('[#].*\n', blog_data).group()
+    title = re.search('title_.*\n', blog_data).group()
     author = re.search('author:.*\n', blog_data)
     if author:
       author = author.group()
@@ -57,7 +57,7 @@ class blogAPI(MainHandler):
 
     blog_data = re.sub(title, '', blog_data).strip('\n')
     
-    title = re.sub('[#]', '', title).strip('\n')
+    title = re.sub('title_', '', title).strip('\n')
     data = {
       'year' : year,
       'day' : day, 
