@@ -46,7 +46,7 @@ class blogAPI(MainHandler):
     with open(blog_path, 'r') as f:
       blog_data = f.read()
     f.closed
-    title = re.search('title_.*\n', blog_data).group()
+    title = re.search('[#].*\n', blog_data).group()
     author = re.search('author:.*\n', blog_data)
     if author:
       author = author.group()
@@ -57,7 +57,7 @@ class blogAPI(MainHandler):
 
     blog_data = re.sub(title, '', blog_data).strip('\n')
     
-    title = re.sub('title_', '', title).strip('\n')
+    title = re.sub('[#]', '', title).strip('\n')
     data = {
       'year' : year,
       'day' : day, 
