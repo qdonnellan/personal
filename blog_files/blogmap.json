@@ -1,5 +1,11 @@
 [
   {
+    "name": "My Advice to New Teachers",
+    "date": "January, 7, 2014",
+    "reference": "/api/blog/2014/01/07",
+    "tokens": ["teaching", "advice", "copy", "grumpy", "teachers", "new", "collaborate"]
+  },
+  {
     "name": "Python Unit Testing For Beginners, From a Beginner",
     "date": "January, 6, 2014",
     "reference": "/api/blog/2014/01/06",
