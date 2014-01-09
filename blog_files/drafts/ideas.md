@@ -9,4 +9,4 @@
 - forming good habits
   - set a goal of certain habits to form then followup sometime later with success-summary
 - how-to post (FreeMind)
-
+- summary of 10 posts in 10 days push
