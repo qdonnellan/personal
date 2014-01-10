@@ -6,6 +6,7 @@
 - how to form a habit of writing blog posts
   - write down ideas as they come to you
 - goal of getting $4000 of recurring monthly revenue
+  - goal of getting 1 super-engaged customer
 - forming good habits
   - set a goal of certain habits to form then followup sometime later with success-summary
 - how-to post (FreeMind)
