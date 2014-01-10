@@ -1,9 +1,15 @@
 [
   {
+    "name": "Apps I Use on a Daily Basis, Developer Edition",
+    "date": "January, 9, 2014",
+    "reference": "/api/blog/2014/01/09",
+    "tokens": ["software", "web apps", "daily", "resources", "web", "python", "daily", "apps", "developer"]
+  },
+  {
     "name": "Apps I Use on a Daily Basis, Teacher Edition",
     "date": "January, 8, 2014",
     "reference": "/api/blog/2014/01/08",
-    "tokens": ["teaching", "web apps", "daily", "resources", "web"]
+    "tokens": ["teaching", "apps", "daily", "resources", "web"]
   },
   {
     "name": "My Advice to New Teachers",

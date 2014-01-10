@@ -20,7 +20,7 @@ class blogAPI(MainHandler):
     self.response.out.write(data)
 
   def get_latest(self):
-    return self.fetch_blog_post('2014', '01', '08')
+    return self.fetch_blog_post('2014', '01', '09')
 
   def get_map(self):
     blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
