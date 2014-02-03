@@ -11,3 +11,25 @@
   - set a goal of certain habits to form then followup sometime later with success-summary
 - how-to post (FreeMind)
 - summary of 10 posts in 10 days push
+- the key to success in school is relationships
+- blog post introducing honeschool
+
+Considering reorganizing the file structure of this app:
+
+personal
+  app.yaml
+  index.yaml
+  readme.md
+  /blog
+    /blog_files
+      /2013
+        /04
+          02.md
+      /2014
+        /01
+          02.md
+          03.md
+
+app.yaml:
+
+

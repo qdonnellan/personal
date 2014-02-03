@@ -1,7 +1,3 @@
-# Copyright (C) 2013 Quentin Donnellan
-# License: MIT (http://opensource.org/licenses/MIT)
-# www.qdonnellan.com
-
 import unittest
 from blog import api
 
