@@ -8,7 +8,7 @@ import json
 import re
 import markdown2
 
-class blogAPI(MainHandler):
+class BlogAPI(MainHandler):
   def get(self, year=None, month=None, day=None):
     if year == 'latest':
       data = self.get_latest()
@@ -31,15 +31,6 @@ class blogAPI(MainHandler):
     return blog_map
 
   def fetch_blog_post(self, year, month, day):
-    # returns dictionary object of blog post
-    # blog posts are stored in ../blog_files/YEAR/MONTH/DAY.md
-    # blog posts should be writtne in the form of:
-    #--:
-    #--: # Titile
-    #--: author: Someone's Name
-    #--:
-    #--: Post content starts here
-    #--:
 
     blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
     blog_path = blog_dir + "/{y}/{m}_{d}.md".format(y = year, m = month, d = day)
