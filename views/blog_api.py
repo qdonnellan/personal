@@ -1,61 +1,24 @@
-# Copyright (C) 2013 Quentin Donnellan
-# License: MIT (http://opensource.org/licenses/MIT)
-# www.qdonnellan.com
+from main_view_handler import ViewHandler
+from controllers.jsonify_blog_post import jsonify_blog_post
+from controllers.fetch_blog_map import fetch_blog_map
 
-from handlers import MainHandler
-import os
-import json
-import re
-import markdown2
+class BlogAPI(ViewHandler):
+    '''
+    the class for request to the blog api, always returns json objects
+    '''
+    def get(self, year=None, month=None, day=None):
+        '''
+        the get request
+        '''
+        if year == 'latest':
+            data = jsonify_blog_post('2014', '01', '10')
+        elif year == 'map':
+            data = fetch_blog_map()
+        else:
+            data = jsonify_blog_post(year, month, day)
 
-class BlogAPI(MainHandler):
-  def get(self, year=None, month=None, day=None):
-    if year == 'latest':
-      data = self.get_latest()
-    elif year == 'map':
-      data = self.get_map()
-    else:
-      data = self.fetch_blog_post(year, month, day)
-    self.response.headers['Content-Type'] = 'application/json' 
-    self.response.out.write(data)
+        self.response.headers['Content-Type'] = 'application/json' 
+        self.response.out.write(data)
 
-  def get_latest(self):
-    return self.fetch_blog_post('2014', '01', '09')
 
-  def get_map(self):
-    blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
-    path = blog_dir + "/blogmap.json"
-    with open(path, 'r') as f:
-      blog_map = f.read()
-    f.closed
-    return blog_map
 
-  def fetch_blog_post(self, year, month, day):
-
-    blog_dir = os.path.join(os.path.dirname(__file__),"blog_files")
-    blog_path = blog_dir + "/{y}/{m}_{d}.md".format(y = year, m = month, d = day)
-    with open(blog_path, 'r') as f:
-      blog_data = f.read()
-    f.closed
-    title = re.search('[#].*\n', blog_data).group()
-    author = re.search('author:.*\n', blog_data)
-    if author:
-      author = author.group()
-      blog_data = re.sub(author, '', blog_data)
-      author = re.sub('author:', '', author).strip('\n')
-    else:
-      author = 'Quentin Donnellan'
-
-    blog_data = re.sub(title, '', blog_data).strip('\n')
-    
-    title = re.sub('[#]', '', title).strip('\n')
-    data = {
-      'year' : year,
-      'day' : day, 
-      'month' : month,
-      'author' : author.strip(' '),
-      'markdown' : blog_data,
-      'html' : markdown2.markdown(blog_data),
-      'title' : title.strip(' ')
-      }
-    return json.dumps(data)
