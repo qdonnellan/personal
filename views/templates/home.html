@@ -17,24 +17,10 @@
     </div>
 </div>
 
-<!-- blog -->
-<div class="container page-content">
-  <div class="row" id="blog">
-    <div class="blog-header section-header">
-      <h1>blog</h1>
-      <div class="form-group">
-        <input class="typeahead form-control input-lg" id="search-input" type="text" placeholder="search">
-      </div>
-      <p class="lead"><a href="/blog">view full blog</a></p>
-    </div>
-    <div class="col-md-10 col-md-offset-1">
-      <h1 data-bind="text: blogViewModel.title"></h1>
-      <div data-bind="html: blogViewModel.html" class="blog-text"></div>
-    </div>
-  </div>
-</div>
-<!-- end blog -->
 <div id="portfolio">
+  <div class="col-md-12 portfolio-about" id="about">
+    {% include 'about_div.html' %}
+  </div>
   <div class="col-md-12 portfolio-teaching" id="teaching">
     {% include 'teaching_div.html' %}
   </div>
