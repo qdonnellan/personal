@@ -9,5 +9,5 @@ app = webapp2.WSGIApplication([
     ('/api/blog/(\w+)', BlogAPI),
     ('/blog/(\w+)/(\w+)/(\w+)', BlogPage),
     ('/blog', BlogPage),
-    ('.*', FontPage)
+    ('.*', FrontPage)
     ],debug=False)
