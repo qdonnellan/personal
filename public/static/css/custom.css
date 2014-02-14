@@ -144,13 +144,40 @@
 
 #about {
   background-image: url("/img/camera_quentin.jpg");
-  background-size: 100%;
+  background-repeat: no-repeat; 
+  background-size: cover;
 }
 
 #about-pane {
   margin-top: 100px;
-  opacity: 0.5;
+  opacity: 0.95;
   background-color: #111;
+  padding: 20px;
+}
+
+#about p {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+#about-links {
+  text-align: center
+}
+
+#about-links i {
+  font-size: 3em !important
+}
+
+#about-links a {
+  font-size: 1em;
+  display: inline-block;
+  margin: 10px;
+  color: #4ddbb8;
+}
+
+#about-links a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 #blog .tt-suggestion + .tt-suggestion {
@@ -347,6 +374,14 @@
 #contact {
   padding-top: 100px;
   padding-bottom: 300px;
+}
+
+.contact-left {
+  text-align: right
+}
+
+.contact-right {
+  text-align: left
 }
 
 #contact .contact-links {
