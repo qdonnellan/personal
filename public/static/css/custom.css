@@ -222,11 +222,11 @@
   background-color: #ffffff;
 }
 
-.portfolio-entrepreneur h1 {
+.portfolio-entrepreneur h1, .portfolio-about h1 {
   color: #369981 !important;
 }
 
-.portfolio-entrepreneur .briefcase p {
+.portfolio-entrepreneur .briefcase p, .portfolio-about .briefcase p {
   color: #111;
 }
 
