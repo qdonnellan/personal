@@ -154,6 +154,10 @@
   color: #fff;
 }
 
+.portfolio-web .section-header {
+  padding-bottom: 100px;
+}
+
 .portfolio-teaching h2, .portfolio-web h2 { color: #fff;}
 .portfolio-teaching .briefcase p, .portfolio-web .briefcase p {color: #fff; }
 
