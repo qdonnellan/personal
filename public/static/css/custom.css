@@ -149,7 +149,8 @@
 }
 
 #about-pane {
-  margin-top: 100px;
+  margin-top: 200px;
+  margin-bottom: 200px;
   opacity: 0.95;
   background-color: #111;
   padding: 20px;
