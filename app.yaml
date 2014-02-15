@@ -1,18 +1,18 @@
 application: qdonnellan
-version: 1
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
 - url: /css
-  static_dir: css
+  static_dir: public/static/css
 
 - url: /js
-  static_dir: js
+  static_dir: public/static/js
 
 - url: /img
-  static_dir: img
+  static_dir: public/static/img
 
 - url: /favicon\.ico
   static_files: favicon.ico

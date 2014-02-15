@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="top-div col-xs-12" id="top">
+  <div class="top-description col-sm-6 hidden-xs">
+    <p>teacher</p>
+    <p>web developer</p>
+    <p>edtech enthusiast</p>
+  </div>
+  <div class="top-name col-sm-6 col-xs-12">
+    <h1>Quentin<br>Donnellan</h1>
+    <p class="visible-xs">teacher, web developer, edtech enthusiast</p>
+  </div>
+  <div class="top-mobile-buttons visible-xs col-xs-12">
+    <a class="btn btn-block btn-theme" href="#about">about</a>
+    <a class="btn btn-block btn-theme" href="#teaching">teaching</a>
+    <a class="btn btn-block btn-theme" href="#entrepreneur">projects</a>
+    <a class="btn btn-block btn-theme" href="#webdev">coding</a>
+    <a class="btn btn-block btn-theme" href="#contact">contact</a>
+  </div>
+  <div class="top-icon col-sm-12 hidden-xs">
+    <i class="fa fa-arrow-circle-down"></i>
+  </div>
+</div>
+<div id="portfolio">
+  <div class="col-xs-12 portfolio-about" id="about">
+    {% include 'about_div.html' %}
+  </div>
+  <div class="col-xs-12 portfolio-teaching" id="teaching">
+    {% include 'teaching_div.html' %}
+  </div>
+  <div class="col-xs-12 portfolio-entrepreneur" id="entrepreneur">
+    {% include 'entrepreneur_div.html' %}
+  </div>
+  <div class="col-xs-12 portfolio-web" id="webdev">
+    {% include 'webdev_div.html' %}
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-xs-12" id="contact">
+    {% include 'contact_div.html' %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,361 @@
+/*
+  Copyright (C) 2013 Quentin Donnellan
+  License: MIT (http://opensource.org/licenses/MIT)
+  www.qdonnellan.com
+*/
+
+.navbar-fixed-top {
+  background-color: #141c26;
+  border: none;
+  color: #e6e6e6;
+  padding-right: 20px;
+}
+
+.navbar-info {
+  padding-top: 0px;
+  padding-left: 20px;
+}
+
+.navbar-info > .navbar-name {
+  font-size: 1.3em;
+  font-weight: 400;
+  color: #fff;
+  padding: 0px; 
+  padding-top: 30px;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar-info > .navbar-name > span {
+  color: #4ddbb8;
+  font-weight: 700
+}
+
+.navbar-right > li {
+  height: 80px;
+}
+
+.navbar-right > li > a {
+  color: #e6e6e6 !important;
+  font-weight: 300;
+  height: 80px;
+  font-size: 2em;
+  text-align: center;
+  border-top: 2px solid #141c26;
+}
+
+.navbar-right > li > a > span {
+  font-size: 0.5em !important;
+  font-weight: 400
+}
+
+.navbar-right > li > a:hover { color: #fff !important; }
+
+.navbar-right > .active > a {
+  background-color: #141c26 !important;
+  border-top: 2px solid #4ddbb8;
+  color: #4ddbb8 !important;
+}
+
+.top-div {
+  background-color: #141c26;
+  margin-top: 0px;
+  margin-bottom: 0px !important;
+}
+
+.top-name { margin: 0px !important; }
+
+.top-name p {
+  text-align: center;
+  color: #fff;
+  padding-bottom: 50px;
+  margin-bottom: 0px !important;
+}
+
+.top-mobile-buttons {
+  margin-top: 0px !important;
+  background-color: #141c26;
+  padding-bottom: 50px;
+}
+
+.top-div .top-name > h1{
+  padding-top: 50px;
+  margin-top: 0px;
+  color: #4ddbb8;
+  font-size: 3em;
+  text-align: center;
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.top-div .top-description > p {
+  color: #f6f6f6;
+  font-weight: 300;
+}
+
+.top-icon {
+  text-align: center;
+  color: #4ddbb8;
+  font-size: 3em;
+  margin-top: 200px
+}
+
+.blog-text {
+  font-size: 1.7em;
+  font-weight: 200;
+  text-align: justify;
+}
+
+#about { padding-top: 20px;}
+
+#about p { color: #111;}
+
+#about-links { text-align: center }
+
+#about-links i { font-size: 3em !important }
+
+#about-links a {
+  font-size: 1em;
+  display: inline-block;
+  margin: 10px;
+  color: #4ddbb8;
+}
+
+#about-links a:hover {
+  color: #369981;
+  text-decoration: none;
+}
+
+.section-header { 
+  text-align: center;
+  padding-bottom: 50px;}
+
+.section-header h1 {
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif;
+  color: #999;
+  font-size: 3em;
+}
+
+.briefcase h2 {
+  font-weight: 300 !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+.blog-header i { color: #33ccff }
+#portfolio, #portfolio div { color: #ffffff; }
+.portfolio-teaching, .portfolio-web { background-color: #141c26; }
+
+.portfolio-teaching a, .portfolio-teaching h1, .portfolio-web a, .portfolio-web h1 {
+  color: #4ddbb8 !important
+}
+
+.portfolio-web .section-description {
+  color: #fff;
+}
+
+.portfolio-web .section-header {
+  padding-bottom: 100px;
+}
+
+.portfolio-teaching h2, .portfolio-web h2 { color: #fff;}
+.portfolio-teaching .briefcase p, .portfolio-web .briefcase p {color: #fff; }
+
+.portfolio-entrepreneur { background-color: #ffffff; }
+.portfolio-entrepreneur h1, .portfolio-about h1 { color: #369981 !important; }
+.portfolio-entrepreneur .briefcase p, .portfolio-about .briefcase p { color: #111; }
+.briefcase > .product-details { 
+  padding: 0px; 
+  padding-bottom: 50px;
+}
+
+.briefcase p {
+  font-size: 1.2em;
+  font-weight: 300
+}
+
+#portfolio h1 { color: #ffffff; }
+
+.portfolio-entrepreneur .product-logo img {
+  width: 200px !important;
+  padding-top:20px;
+  padding-bottom: 20px;
+}
+
+.portfolio-entrepreneur .product-logo { text-align: center; }
+.portfolio-entrepreneur .product-logo p { text-align: center; }
+.portfolio-entrepreneur { padding-bottom: 100px }
+
+.icon-links > a {
+  color: #fff;
+  font-size: 1em !important
+}
+
+.icon-links > .btn-theme {
+  width: 100%;
+}
+
+.btn-theme:hover {
+  background-color: #4ddbb8;
+  color: #fff !important;
+}
+
+.btn-theme i {
+  font-size: 1.5em !important
+}
+
+.btn-theme {
+  border: 1px solid #4ddbb8;
+  color: #4ddbb8! important;
+}
+
+.portfolio-entrepreneur .section-description { color: #111 !important; }
+
+.section-description {
+  font-weight: 300;
+  font-size: 1.4em;
+}
+/* Brands */
+
+.lessonwell-brand {
+  padding-top: 30%;
+  font-family: 'Ubuntu', sans-serif !important;
+  color: #111 !important;
+  font-weight: 700 !important;
+  font-size: 2.5em !important
+}
+
+.lessonwell-brand > span {
+  font-weight: 300;
+  color: #0099ff;
+}
+
+.honeschool-brand  {
+  padding-top: 30%;
+  font-weight: 400 !important;
+  font-size: 2.5em !important;
+  color: #222!important;
+  font-family: 'Days One', sans-serif !important;
+}
+
+.honeschool-brand > span {
+  font-weight: 100 !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.science-council-brand {
+  text-align: center;
+  line-height: 80%;
+  padding-top: 20%;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 4em !important
+}
+
+#contact h1 { color: #369981; }
+
+#contact .contact-links { 
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 300 
+}
+
+#contact {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.contact-left {
+  padding-bottom: 20px
+}
+
+.contact-links a { color: #111; }
+
+.contact-links a:hover {
+  color: #4ddbb8;
+  text-decoration: none
+}
+
+.blog-contents {
+  margin-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
+.footer-div {
+  background-color:  #141c26;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: #f6f6f6;
+}
+
+.footer-div a { color: #4ddbb8; }
+
+/* styles for devices larger than small */
+@media(min-width: 768px) {
+
+  .section-header {
+    text-align: center;
+    padding-bottom: 100px;
+    padding-top: 100px
+  }
+
+  .section-header h1 {
+    font-size: 6em;
+  }
+
+  .top-div {
+    padding-top: 200px;
+    padding-bottom: 200px;
+  }
+
+  .top-div .top-name > h1{
+    padding-top: 0px;
+    text-align: left;
+    font-size: 5em
+  }
+
+  .top-div .top-description > p {
+    text-align: right;
+    font-size: 2em;
+  }
+
+  .top-description { padding-top:10px; }
+
+  .briefcase > .product-details { 
+    padding: 50px;  
+  }
+
+  #about {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-image: url("/img/camera_quentin.jpg");
+    background-repeat: no-repeat; 
+    background-size: cover;
+  }
+
+  #about-pane {
+    padding:20px;
+    opacity: 0.95;
+    background-color: #111;
+  }
+
+  #about p { 
+    font-size: 1.5em;
+    color: #fff; 
+  }
+
+  .icon-links > .btn-theme {
+    width: auto;
+  }
+
+  #about-links a:hover { color: #fff; }
+
+  #contact { padding-bottom: 300px; }
+  .contact-left { text-align: right }
+  .contact-right { text-align: left }
+  #contact .contact-links { font-size: 2em }
+
+  .portfolio-entrepreneur .product-logo { height: 250px !important; }
+
+}
