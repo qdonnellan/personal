@@ -8,6 +8,8 @@ def fetch_blog_map():
     return the a json object containing a list of references to all blog files
     '''
     file_list = discover_blog_files()
+    file_list.sort()
+    file_list.reverse()
     data = []
     for f in file_list:
         re_match = re.search('(\d+)/(\d+)/(\d+)', f)
