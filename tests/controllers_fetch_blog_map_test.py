@@ -15,4 +15,7 @@ class FetchBlogMapTest(TestHandler):
         json_blog_map = fetch_blog_map()
         self.assertIsNotNone(json_blog_map)
 
+        data = json.loads(json_blog_map)
+        self.assertEqual(len(data), 11)
+
         

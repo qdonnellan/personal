@@ -31,6 +31,8 @@ def jsonify_blog_post(year, month, day):
             'author' : author.strip(' '),
             'markdown' : blog_post,
             'html' : markdown(blog_post),
-            'title' : title.strip(' ')
+            'title' : title.strip(' '),
+            'permalink' : 'http://qdonnellan.com/blog/%s/%s/%s' % (year, month, day),
+            'api_reference' : '/api/blog/%s/%s/%s' % (year, month, day),
         }
     return json.dumps(data)

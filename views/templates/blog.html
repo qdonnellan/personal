@@ -1,19 +1,42 @@
-{% extends "base.html" %}
+{% extends "blog_base.html" %}
+
+{% block extra_js %}
+  
+{% endblock %}
 
 {% block body %}
 <div class="container blog-contents">
-  <div class="col-sm-3">
-    {% for post in blogMAP | sort(attribute='reference', reverse=True) %}
+  <div class="col-sm-3 blog-map-div" data-bind="foreach: map">
       <p>
-        {{ post['date'] }} <br><a href="{{ post['reference'] | replace('/api', '' )}}">{{ post['name'] }}</a>
+        <a data-bind="text: title, click: $parent.fetchBlog, attr: {href: api_reference}"></a>
+        <br>
+        <span class="text-muted">
+          <span data-bind="text: year"></span>/
+          <span data-bind="text: month"></span>/
+          <span data-bind="text: day"></span>
+        </span>
       </p>
-    {% endfor %}
   </div>
-  <div class="col-sm-9">
-    <h1>{{ blogJSON['title']}}</h1>
-    <div class="blog-text">
-      {{ blogJSON['html'] | safe}}
+  <div class="col-sm-9 blog-post-div">
+    <h1 data-bind="text: title"></h1>
+
+    <div class="blog-text" data-bind="html: blog_html"></div>
+
+    <div class='permalink-div'>
+      <hr>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="permalink" class="col-sm-2 control-label">Permalink</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="permalink" data-bind="value: permalink">
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+<script type='text/javascript' src='/js/app.js'></script>
+<script type='text/javascript' src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}

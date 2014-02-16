@@ -1,64 +1,59 @@
-// Copyright (C) 2013 Quentin Donnellan
-// License: MIT (http://opensource.org/licenses/MIT)
-// www.qdonnellan.com
+function ViewModel() {
+    var self = this;
 
-var blogViewModel = {
-  month: ko.observable(''),
-  year: ko.observable(''),
-  day: ko.observable(''),
-  html: ko.observable('<h1 class="text-muted"><i class="fa fa-cog fa-spin"></i> loading...</h1>'),
-  title: ko.observable()
+    self.year = ko.observable('');
+    self.month = ko.observable('');
+    self.day = ko.observable('');
+    self.blog_html = ko.observable('<h1 class="text-muted"><i class="fa fa-cog fa-spin"></i> loading...</h1>');
+    self.title = ko.observable('');
+    self.permalink = ko.observable('');
+    self.map = ko.observableArray();
+
+    self.updateBlogPost = function(data) {
+        self.month(data.month);
+        self.blog_html(data.html);
+        self.title(data.title);
+        self.year(data.year);
+        self.day(data.day);
+        self.permalink(data.permalink);
+        $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+    };
+
+    self.fetchBlog = function(data) {
+        self.updateBlogPost(data);
+    };
 };
+    
 
-function updateBlogViewModel(data) {
-  blogViewModel.month(data.month);
-  blogViewModel.html(data.html);
-  blogViewModel.title(data.title);
-  blogViewModel.year(data.year);
-  blogViewModel.day(data.day);
-  $('[data-spy="scroll"]').each(function () {
-    var $spy = $(this).scrollspy('refresh')
-  });
-}
+vm = new ViewModel();
 
-$.getJSON("/api/blog/latest", function (result) {
-    updateBlogViewModel(result)
-  });
-
-// blog typehead stuff
-$('#blog .typeahead').typeahead({                              
-  name: 'blog-list',                                                      
-  prefetch: '/api/blog/map',
-  template: [                                                           
-    '<p class="tt-blog-name">{{name}}</p>',                                      
-    '<p class="tt-blog-date">{{date}}</p>'                         
-  ].join(''),                                                                 
-  engine: Hogan                                             
-});
-
-$('#search-input').bind('typeahead:selected', function(obj, datum, name) {      
-    blog_ref = datum.reference;
-    $.getJSON(blog_ref, function (result) {
-      updateBlogViewModel(result)
+$(document).ready(function() {
+    // get the latest blog post
+    $.getJSON('/api/blog/latest', function (response){
+        vm.updateBlogPost(response);
+    });
+    // get a map of all blog posts
+    $.getJSON('/api/blog/map', function (response){
+        vm.map(response);
     });
 });
 
-ko.applyBindings(blogViewModel); // This makes Knockout get to work
+ko.applyBindings(vm);
 
 // smooth scrolling from one #id to another #id on the page
 $(function() {
-  $('a[href*=#]:not([href=#])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
-        || location.hostname == this.hostname) {
-
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
+    $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+            || location.hostname == this.hostname) {
+        
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });
 });

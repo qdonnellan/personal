@@ -100,12 +100,6 @@
   margin-top: 200px
 }
 
-.blog-text {
-  font-size: 1.7em;
-  font-weight: 200;
-  text-align: justify;
-}
-
 #about { padding-top: 20px;}
 
 #about p { color: #111;}
@@ -142,7 +136,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.blog-header i { color: #33ccff }
+
 #portfolio, #portfolio div { color: #ffffff; }
 .portfolio-teaching, .portfolio-web { background-color: #141c26; }
 
@@ -275,11 +269,6 @@
   text-decoration: none
 }
 
-.blog-contents {
-  margin-top: 80px;
-  padding-top: 100px;
-  padding-bottom: 200px;
-}
 
 .footer-div {
   background-color:  #141c26;

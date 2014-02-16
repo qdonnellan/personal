@@ -1,0 +1,57 @@
+html, body {
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1em
+}
+
+.blog-text {
+  font-size: 1.5em;
+  font-weight: 200;
+  text-align: justify;
+}
+
+.blog-post-div {
+    padding-top: 0px
+}
+
+.blog-map-div {
+    padding-top: 150px
+}
+
+pre {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font-size: 0.8em;
+  margin-bottom: 10px
+}
+
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Neuton', serif;
+  color: #23241f;
+}
+
+/* Styles for tablet+ devices */
+
+    h1 { font-size: 5rem }
+    h2 { font-size: 2.8rem }
+    h3 { font-size: 2.4rem }
+    h4 { font-size: 2rem }
+
+    .blog-contents {
+        margin-top: 100px;
+        padding-bottom: 200px;
+    }
+
+    .permalink-div {
+        padding-top: 50px !important;
+    }
+
+    #permalink {
+        font-size: 1.2em
+    }
+}
+
+
+

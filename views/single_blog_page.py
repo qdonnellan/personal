@@ -3,7 +3,7 @@ import json
 from main_view_handler import ViewHandler
 from controllers.jsonify_blog_post import jsonify_blog_post
 
-class BlogPage(ViewHandler):
+class SingleBlogPage(ViewHandler):
     '''
     handler for the blog page view
     '''
@@ -11,4 +11,5 @@ class BlogPage(ViewHandler):
         '''
         handle the get request
         '''
-        self.render('blog.html')
+        blog = jsonify_blog_post(year, month, day)
+        self.render('single_blog_page.html', blog = json.loads(blog))

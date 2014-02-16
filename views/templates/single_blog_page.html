@@ -1,0 +1,14 @@
+{% extends "blog_base.html" %}
+
+
+{% block body %}
+<div class="container blog-contents">
+  <div class="blog-post-div col-sm-8 col-sm-offset-2">
+    <h1 data-bind="text: title">{{ blog['title'] }}</h1>
+    <div class="blog-text" data-bind="html: blog_html">{{ blog['html'] | safe }}</div>
+  </div>
+</div>
+
+<script type='text/javascript' src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
